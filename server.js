@@ -6,6 +6,7 @@ require('dotenv').config();
 // Assign port to server
 const PORT = process.env.PORT || 8080;
 
+// Require Models
 const db = require('./models')
 
 // Initialize Express
@@ -18,11 +19,14 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static('public'));
 
-// Define routes
-// var apiRoutes = require('./routes/apiRoutes.js');
-// var htmlRoutes = require('./routes/htmlRoutes.js');
-// app.use(apiRoutes, htmlRoutes);
+// Define API routes here
+app.get('/', (req, res) => {
+   res.json({
+      msg: 'Hello API Route'
+   });
+});
 
+// Send every other request to the React app
 app.get('*', (req, res) => {
    res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
