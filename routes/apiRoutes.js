@@ -1,12 +1,18 @@
 const router = require("express").Router();
-const book = require("../models/Book.js");
+const Book = require("../models/Book.js");
 
 router.get('/api/books', (req, res) => {
-   res.json({ msg: 'Success' });
+    Book.find({})
+      .sort({ date: -1 })
+      .then(books => res.json(books))
+      .catch(err => res.status(422).json(err));
 });
 
 router.post('/api/books', (req, res) => {
-   res.json({ msg: 'Success' });
+    Book.create(req.body)
+       .then(books => res.json(books))
+       .catch(err => res.status(422).json(err));
+
 });
 
 router.delete('/api/books/:id', (req, res) => {
