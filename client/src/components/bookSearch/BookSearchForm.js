@@ -5,14 +5,11 @@ class BookSearch extends Component {
       return (
          <form>
             <div className='form-group'>
-               <label for='formGroupExampleInput'>
-                  <h4>Book Search</h4>
-               </label>
+               <h4>Book Search</h4>
                <input
                   type='text'
                   className='form-control'
-                  id='formGroupExampleInput'
-                  placeholder='Example input'
+                  placeholder='Start your search here'
                ></input>
                <button 
                type='submit' 
