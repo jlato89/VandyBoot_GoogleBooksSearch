@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import BookSearchForm from '../components/bookSearch/BookSearchForm';
-import ResultsContainer from '../components/bookSearch/ResultsContainer';
-import BookResults from '../components/bookSearch/BookResults';
+import BookSearchForm from '../components/BookSearchForm';
+import BookResults from '../components/BookResults';
 
-class App extends Component {
+class Search extends Component {
    render() {
       return (
-         <div className='app'>
+         <div>
             <BookSearchForm />
-            <ResultsContainer />
+            <h3>Search Results</h3>
             <BookResults />
          </div>
       );
    }
 }
 
-export default App;
+export default Search;
