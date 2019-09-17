@@ -1,23 +1,24 @@
-import React, { Component } from 'react'
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar'
-import SearchJumboTron from './components/bookSearch/SearchJumboTron'
-import BookSearchForm from './components/bookSearch/BookSearchForm'
-import ResultsContainer from './components/bookSearch/ResultsContainer'
-import BookResults from './components/bookSearch/BookResults'
+import Search from './pages/Search';
+import Saved from './pages/Saved';
+import NoMatch from './pages/NoMatch';
 
-class App extends Component {
-  render() {
+
+function App() {
     return (
-      <div className='app'>
-        <Navbar />
-        <SearchJumboTron />
-        <BookSearchForm />
-        <ResultsContainer />
-        <BookResults />
-      </div>
-    )
+       <Router>
+          <div>
+             <Navbar />
+             <Switch>
+                <Route exact path='/search' component={Search} />
+                <Route exact path='/saved' component={Saved} />
+                <Route component={NoMatch} />
+             </Switch>
+          </div>
+       </Router>
+    );
   }
-}
 
 export default App;
