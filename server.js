@@ -1,13 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require ('path');
 require('moment');
 require('dotenv').config();
 
 // Assign port to server
 const PORT = process.env.PORT || 8080;
-
-// Require Models
-const db = require('./models')
 
 // Initialize Express
 const app = express();
@@ -20,11 +18,8 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Define API routes here
-app.get('/api', (req, res) => {
-   res.json({
-      msg: 'Hello API Route'
-   });
-});
+const apiRoutes = require('./routes/apiRoutes.js');
+app.use(apiRoutes);
 
 // Send every other request to the React app
 app.get('*', (req, res) => {
