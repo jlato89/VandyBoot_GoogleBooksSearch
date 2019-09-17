@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Define API routes here
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
    res.json({
       msg: 'Hello API Route'
    });
