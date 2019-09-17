@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
-import SavedContainer from '../components/booksSaved/SavedContainer';
-import SavedResults from '../components/booksSaved/SavedResults';
+import SavedResults from '../components/SavedResults';
 
-class App extends Component {
+class Saved extends Component {
+   state = {
+      books: []
+   };
+
+   componentDidMount() {
+      this.loadBooks();
+   }
+
+   loadBooks = () => {
+      axios
+         .get('/api/books')
+         .then(res => {
+            this.setState({
+               books: res.data
+            });
+            console.log(this.state.books);
+         })
+         .catch(err => console.log(err));
+   };
+
    render() {
       return (
-         <div className='app'>
-            <SavedContainer />
-            <SavedResults />
+         <div>
+            <h3>Saved Results</h3>
+            <SavedResults books={this.state.books} />
          </div>
       );
    }
 }
 
-export default App;
+export default Saved;
