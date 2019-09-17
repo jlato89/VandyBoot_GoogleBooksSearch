@@ -16,7 +16,7 @@ class BookResults extends Component {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                </p>
-               <div class='row justify-content-between'>
+               <div className='row justify-content-between'>
                   <a href='/' className='btn btn-primary col-5'>
                      View
                   </a>
